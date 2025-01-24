@@ -7,8 +7,6 @@ This project is a REST API built using **Node.js** and **Express.js**. The API a
 - Fetch all users.
 - Fetch a specific user by ID.
 - Add a new user.
-- Update an existing user.
-- Delete a user.
 
 ## Prerequisites
 - Node.js installed (v14 or higher recommended).
@@ -92,48 +90,6 @@ This project is a REST API built using **Node.js** and **Express.js**. The API a
 }
 ```
 
-### Update a User
-**PATCH** `/api/users/:id`
-
-#### Parameters:
-- `id`: The ID of the user to update.
-
-#### Request Body:
-- JSON object with the fields to update.
-
-#### Response:
-- **200 OK**: Returns the updated user object.
-- **404 Not Found**: If the user with the specified ID does not exist.
-
-```json
-{
-  "status": "Success",
-  "updatedUser": {
-    "id": 1,
-    "first_name": "UpdatedName",
-    "last_name": "Doe",
-    "email": "updatedemail@example.com"
-  }
-}
-```
-
-### Delete a User
-**DELETE** `/api/users/:id`
-
-#### Parameters:
-- `id`: The ID of the user to delete.
-
-#### Response:
-- **200 OK**: Confirms deletion.
-- **404 Not Found**: If the user with the specified ID does not exist.
-
-```json
-{
-  "status": "Success",
-  "message": "User with id 1 deleted!"
-}
-```
-
 ### Render User List (HTML)
 **GET** `/users`
 
@@ -155,15 +111,5 @@ curl http://localhost:8000/api/users
 ### Add a New User
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"first_name":"Alice","last_name":"Johnson","email":"alice@example.com"}' http://localhost:8000/api/users
-```
-
-### Update a User
-```bash
-curl -X PATCH -H "Content-Type: application/json" -d '{"first_name":"UpdatedName"}' http://localhost:8000/api/users/1
-```
-
-### Delete a User
-```bash
-curl -X DELETE http://localhost:8000/api/users/1
 ```
 
